@@ -83,7 +83,6 @@ jobs:
             --binarysource="x-gha,readwrite" ^
             --x-install-root=C:\vcpkg\installed ^
             --x-manifest-root=. ^
-            --x-feature=flight ^
             --x-feature=orc ^
             --x-feature=parquet ^
             --x-feature=s3
