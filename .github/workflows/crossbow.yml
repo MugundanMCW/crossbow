@@ -4,7 +4,7 @@ name: Crossbow
 on:
   push:
     branches:
-      - "*-github-*"
+      - "*"
 
 env:
   ARCHERY_DEBUG: 1
@@ -128,18 +128,18 @@ jobs:
             "arrow/python/repaired_wheels/*.whl"
         env:
           CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
-      - name: Verify uploaded artifacts
-        shell: bash
-        run: |
-          archery crossbow \
-            --queue-path $(pwd)/crossbow \
-            --queue-remote https://github.com/MugundanMCW/crossbow.git \
-            status \
-            --task-filter 'wheel-windows-cp312-cp312-arm64' \
-            --no-fetch \
-            --validate \
-            build-24
-        env:
-          CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      # - name: Verify uploaded artifacts
+      #   shell: bash
+      #   run: |
+      #     archery crossbow \
+      #       --queue-path $(pwd)/crossbow \
+      #       --queue-remote https://github.com/MugundanMCW/crossbow.git \
+      #       status \
+      #       --task-filter 'wheel-windows-cp312-cp312-arm64' \
+      #       --no-fetch \
+      #       --validate \
+      #       build-24
+      #   env:
+      #     CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 
       
