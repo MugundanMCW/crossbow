@@ -4,7 +4,7 @@ name: Crossbow
 on:
   push:
     branches:
-      - "*-github-*"
+      - "*"
 
 env:
   ARCHERY_DEBUG: 1
@@ -65,9 +65,10 @@ jobs:
       - name: Cache vcpkg installed artifacts
         uses: actions/cache@v4
         with:
-          path: C:\vcpkg\installed
-          key: "vcpkg-installed-windows-arm64-${{ hashFiles('arrow/ci/vcpkg/vcpkg.json', 'arrow/ci/vcpkg/arm64-windows-*.cmake') }}"          restore-keys: |
-            vcpkg-installed-windows-arm64-
+          path: "C:\\vcpkg\\installed"
+          key: {% raw %}"vcpkg-installed-windows-arm64-${{ hashFiles('arrow/ci/vcpkg/vcpkg.json', 'arrow/ci/vcpkg/arm64-windows-*.cmake') }}"{% endraw %}
+          
+          restore-keys: vcpkg-installed-windows-arm64-
 
 
       - name: Copy vcpkg ARM64 triplet files
