@@ -84,7 +84,6 @@ jobs:
             --x-install-root=C:\vcpkg\installed ^
             --x-manifest-root=. ^
             --x-feature=flight ^
-            --x-feature=json ^
             --x-feature=orc ^
             --x-feature=parquet ^
             --x-feature=s3
