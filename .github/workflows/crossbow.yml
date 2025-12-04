@@ -66,7 +66,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: "C:\\vcpkg\\installed"
-          key: {% raw %}"vcpkg-installed-windows-arm64-${{ hashFiles('arrow/ci/vcpkg/vcpkg.json', 'arrow/ci/vcpkg/arm64-windows-*.cmake') }}"{% endraw %}
+          key: "vcpkg-installed-windows-arm64-${{ "{{" }} hashFiles('arrow/ci/vcpkg/vcpkg.json', 'arrow/ci/vcpkg/arm64-windows-*.cmake') {{ "}}" }}"
           restore-keys: "vcpkg-installed-windows-arm64-"
 
 
