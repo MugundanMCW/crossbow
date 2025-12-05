@@ -13,7 +13,7 @@ jobs:
   build:
     name: "Build wheel for Windows ARM64"
     runs-on: "windows-11-arm"
-    timeout-minutes: 240
+    timeout-minutes: 300
     env:
       PYTHON_CMD: "py -3.12"
       CMAKE_BUILD_TYPE: release
@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 11510b606a6dd2387c303c5b8b2b494fabfb4ddc
+          ref: 553f6a20c043d41fdc192747bad5718dc39c4a1e
           submodules: recursive
 
       - name: Setup Python
@@ -66,13 +66,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: C:\vcpkg\installed
-          key: "vcpkg-installed-windows-arm64-${{ hashFiles('arrow/ci/vcpkg/vcpkg.json', 'arrow/ci/vcpkg/arm64-windows-*.cmake') }}"      
-          restore-keys: vcpkg-installed-windows-arm64-
+          key: "vcpkg-installed-arm64-windows-static-md-${{ hashFiles('arrow/ci/vcpkg/*.cmake') }}"      
+          restore-keys: vcpkg-installed-arm64-windows-static-md-
 
       - name: Copy vcpkg ARM64 triplet files
         shell: cmd
         run: |
-          copy arrow\ci\vcpkg\arm64-windows-*.cmake C:\vcpkg\triplets\community\
+          copy arrow\ci\vcpkg\arm64-windows-static-md.cmake C:\vcpkg\triplets\community\
+          copy arrow\ci\vcpkg\arm64-windows-static-md-debug.cmake C:\vcpkg\triplets\community\
       
       - name: Install vcpkg dependencies
         shell: cmd
@@ -81,6 +82,7 @@ jobs:
           C:\vcpkg\vcpkg.exe install ^
             --binarysource=clear ^
             --binarysource="x-gha,readwrite" ^
+            --triplet arm64-windows-static-md ^
             --x-install-root=C:\vcpkg\installed ^
             --x-manifest-root=. ^
             --x-feature=flight ^
@@ -142,5 +144,3 @@ jobs:
       #       build-24
       #   env:
       #     CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
-
-      
