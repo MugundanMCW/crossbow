@@ -84,6 +84,7 @@ jobs:
             --x-install-root=C:\vcpkg\installed ^
             --x-manifest-root=. ^
             --x-feature=flight ^
+            --x-feature=gcs ^
             --x-feature=json ^
             --x-feature=orc ^
             --x-feature=parquet ^
