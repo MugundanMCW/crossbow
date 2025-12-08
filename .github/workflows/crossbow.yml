@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 31c8602fe7b754be29eba565e0474527b5a36eb9
+          ref: 69473295f3a610846f3166557bca0b0a69af9794
           submodules: recursive
 
       - name: Setup Python
@@ -66,14 +66,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: C:\vcpkg\installed
-          key: "vcpkg-installed-arm64-windows-static-md-${{ hashFiles('arrow/ci/vcpkg/*.cmake') }}"      
-          restore-keys: vcpkg-installed-arm64-windows-static-md-
+          key: "vcpkg-installed-arm64-windows-${{ hashFiles('arrow/ci/vcpkg/*.cmake') }}"      
+          restore-keys: vcpkg-installed-arm64-windows-
 
       - name: Copy vcpkg ARM64 triplet files
         shell: cmd
         run: |
-          copy arrow\ci\vcpkg\arm64-windows-static-md.cmake C:\vcpkg\triplets\community\
-          copy arrow\ci\vcpkg\arm64-windows-static-md-debug.cmake C:\vcpkg\triplets\community\
+          copy arrow\ci\vcpkg\arm64-windows.cmake C:\vcpkg\triplets\community\
+          copy arrow\ci\vcpkg\arm64-windows.cmake C:\vcpkg\triplets\community\
       
       - name: Install vcpkg dependencies
         shell: cmd
@@ -82,7 +82,7 @@ jobs:
           C:\vcpkg\vcpkg.exe install ^
             --binarysource=clear ^
             --binarysource="x-gha,readwrite" ^
-            --triplet arm64-windows-static-md ^
+            --triplet arm64-windows ^
             --x-install-root=C:\vcpkg\installed ^
             --x-manifest-root=. ^
             --x-feature=flight ^
@@ -91,12 +91,12 @@ jobs:
             --x-feature=orc ^
             --x-feature=parquet ^
             --x-feature=s3
-      - name: Build Arrow C++ and PyArrow wheel
-        shell: cmd
-        env:
-          SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
-        run: |
-          call "arrow\ci\scripts\python_wheel_windows_build_arm64.bat"
+      # - name: Build Arrow C++ and PyArrow wheel
+      #   shell: cmd
+      #   env:
+      #     SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
+      #   run: |
+      #     call "arrow\ci\scripts\python_wheel_windows_build_arm64.bat"
       - name: ccache stats
         if: always()
         shell: bash
