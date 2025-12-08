@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 553f6a20c043d41fdc192747bad5718dc39c4a1e
+          ref: 01f65f5f69ed4e1b1c2eb948b2b0360a433ba22e
           submodules: recursive
 
       - name: Setup Python
@@ -91,12 +91,12 @@ jobs:
             --x-feature=orc ^
             --x-feature=parquet ^
             --x-feature=s3
-      # - name: Build Arrow C++ and PyArrow wheel
-      #   shell: cmd
-      #   env:
-      #     SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
-      #   run: |
-      #     call "arrow\ci\scripts\python_wheel_windows_build_arm64.bat"
+      - name: Build Arrow C++ and PyArrow wheel
+        shell: cmd
+        env:
+          SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
+        run: |
+          call "arrow\ci\scripts\python_wheel_windows_build_arm64.bat"
       - name: ccache stats
         if: always()
         shell: bash
