@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 7c343ec05f2bfd488704ead12e0a736e5ee09df5
+          ref: e730bcb62b9096ff8acb472a361f018b27ba1020
           submodules: recursive
 
       - name: Setup Python
