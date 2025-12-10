@@ -60,10 +60,6 @@ jobs:
       #     SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
       #   run: |
       #     call "arrow\ci\scripts\python_wheel_windows_arm64_build.bat"
-      - name: ccache stats
-        if: always()
-        shell: bash
-        run: ccache -s
       - uses: actions/upload-artifact@v4
         with:
           name: wheel
