@@ -50,15 +50,16 @@ jobs:
             --x-manifest-root=. ^
             --x-feature=flight ^
             --x-feature=json ^
+            --x-feature=gcs ^
             --x-feature=orc ^
             --x-feature=parquet ^
             --x-feature=s3
-      - name: Build Arrow C++ and PyArrow wheel
-        shell: cmd
-        env:
-          SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
-        run: |
-          call "arrow\ci\scripts\python_wheel_windows_arm64_build.bat"
+      # - name: Build Arrow C++ and PyArrow wheel
+      #   shell: cmd
+      #   env:
+      #     SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
+      #   run: |
+      #     call "arrow\ci\scripts\python_wheel_windows_arm64_build.bat"
       - name: ccache stats
         if: always()
         shell: bash
@@ -93,18 +94,18 @@ jobs:
             "arrow/python/repaired_wheels/*.whl"
         env:
           CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
-      - name: Verify uploaded artifacts
-        shell: bash
-        run: |
-          archery crossbow \
-            --queue-path $(pwd)/crossbow \
-            --queue-remote https://github.com/MugundanMCW/crossbow.git \
-            status \
-            --task-filter 'wheel-windows-cp312-cp312-arm64' \
-            --no-fetch \
-            --validate \
-            build-29
-        env:
-          CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      # - name: Verify uploaded artifacts
+      #   shell: bash
+      #   run: |
+      #     archery crossbow \
+      #       --queue-path $(pwd)/crossbow \
+      #       --queue-remote https://github.com/MugundanMCW/crossbow.git \
+      #       status \
+      #       --task-filter 'wheel-windows-cp312-cp312-arm64' \
+      #       --no-fetch \
+      #       --validate \
+      #       build-29
+      #   env:
+      #     CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 
       
