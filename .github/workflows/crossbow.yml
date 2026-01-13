@@ -79,7 +79,7 @@ jobs:
           SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
           arch: "arm64"
         run: |
-          call "arrow\ci\scripts\python_wheel_windows_arm64_build.bat"
+          call "arrow\ci\scripts\python_wheel_windows_build.bat"
           
       - uses: actions/upload-artifact@v4
         with:
