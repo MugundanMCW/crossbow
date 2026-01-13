@@ -77,7 +77,7 @@ jobs:
         shell: cmd
         env:
           SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
-          arch: "arm64"
+          arch: "ARM64"
         run: |
           call "arrow\ci\scripts\python_wheel_windows_build.bat"
           
