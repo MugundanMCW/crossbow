@@ -59,20 +59,20 @@ jobs:
           key: "vcpkg-installed-windows-arm64-${{ hashFiles('arrow/ci/vcpkg/vcpkg.json', 'arrow/ci/vcpkg/arm64-windows-*.cmake') }}"      
           restore-keys: vcpkg-installed-windows-arm64-
 
-      - name: Install vcpkg dependencies
-        shell: cmd
-        run: |
-          cd arrow\ci\vcpkg
-          C:\vcpkg\vcpkg.exe install ^
-            --binarysource="clear;x-gha,readwrite" ^
-            --x-install-root=C:\vcpkg\installed ^
-            --x-manifest-root=. ^
-            --x-feature=flight ^
-            --x-feature=json ^
-            --x-feature=gcs ^
-            --x-feature=orc ^
-            --x-feature=parquet ^
-            --x-feature=s3
+      # - name: Install vcpkg dependencies
+      #   shell: cmd
+      #   run: |
+      #     cd arrow\ci\vcpkg
+      #     C:\vcpkg\vcpkg.exe install ^
+      #       --binarysource="clear;x-gha,readwrite" ^
+      #       --x-install-root=C:\vcpkg\installed ^
+      #       --x-manifest-root=. ^
+      #       --x-feature=flight ^
+      #       --x-feature=json ^
+      #       --x-feature=gcs ^
+      #       --x-feature=orc ^
+      #       --x-feature=parquet ^
+      #       --x-feature=s3
       - name: Build Arrow C++ and PyArrow wheel
         shell: cmd
         env:
