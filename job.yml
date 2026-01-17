@@ -1,0 +1,29 @@
+!Job
+target: !Target
+  head: 11e74a6f5fb4d047778d96358d22ee64dfa2a566
+  email: mugunthan.selvanayagam@multicorewareinc.com
+  branch: trial
+  remote: https://github.com/MugundanMCW/arrow.git
+  github_repo: MugundanMCW/arrow
+  version: 18.0.0
+  r_version: 18.0.0
+  no_rc_version: 18.0.0
+  no_rc_r_version: 18.0.0
+  no_rc_no_dev_version: 18.0.0
+  no_rc_semver_version: 18.0.0
+  no_rc_snapshot_version: 18.0.0
+  so_version: '1800'
+tasks:
+  wheel-windows-cp312-cp312-amd64: !Task
+    name: wheel-windows-cp312-cp312-amd64
+    ci: github
+    template: python-wheels/github.windows.yml
+    artifacts:
+    - pyarrow-18.0.0-cp312-cp312-win_amd64.whl
+    params:
+      python_version: '3.12'
+      python_abi_tag: cp312
+    branch: build-44-github-wheel-windows-cp312-cp312-amd64
+    commit: cb2b59cc9a669645e5a312f1e97dc3390bdf5426
+params: {}
+branch: build-44
