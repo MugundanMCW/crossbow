@@ -34,7 +34,7 @@ jobs:
     runs-on: "windows-11-arm"
     timeout-minutes: 240
     env:
-      PYTHON_CMD: "py -3.13t"
+      PYTHON_CMD: "py -3.13"
       CMAKE_BUILD_TYPE: release
     steps:
       - name: Checkout Arrow
@@ -49,7 +49,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13t"
+          python-version: "3.13"
           architecture: "arm64"
 
       - name: Install Python build dependencies
