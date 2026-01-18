@@ -80,13 +80,13 @@ jobs:
             --x-feature=parquet ^
             --x-feature=s3
             
-      - name: Build Arrow C++ and PyArrow wheel
-        shell: cmd
-        env:
-          ARCH: "ARM64"
-          SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
-        run: |
-          call "arrow\ci\scripts\python_wheel_windows_build.bat"
+      # - name: Build Arrow C++ and PyArrow wheel
+      #   shell: cmd
+      #   env:
+      #     ARCH: "ARM64"
+      #     SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
+      #   run: |
+      #     call "arrow\ci\scripts\python_wheel_windows_build.bat"
           
       # - uses: actions/upload-artifact@v4
       #   with:
