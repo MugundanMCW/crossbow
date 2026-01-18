@@ -34,7 +34,7 @@ jobs:
     runs-on: "windows-11-arm"
     timeout-minutes: 240
     env:
-      PYTHON_CMD: "py -3.13"
+      PYTHON_CMD: "py -3.13-arm64"
       CMAKE_BUILD_TYPE: release
     steps:
       - name: Checkout Arrow
