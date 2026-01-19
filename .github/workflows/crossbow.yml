@@ -54,7 +54,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 11e74a6f5fb4d047778d96358d22ee64dfa2a566
+          ref: 7d03dbf301c97a5b16d3514de9382c04d3841477
           submodules: recursive
 
       - name: Login to GitHub Container Registry
