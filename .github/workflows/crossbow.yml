@@ -33,8 +33,8 @@ jobs:
     runs-on: windows-2022
     env:
       # archery uses this environment variable
-      PYTHON: "3.12"
-      PYTHON_ABI_TAG: "cp312"
+      PYTHON: "3.13t"
+      PYTHON_ABI_TAG: "cp313t"
       # this is a private repository at the moment (mostly because of licensing
       # consideration of windows images with visual studio), but anyone can
       # recreate the image by manually building it via:
@@ -68,7 +68,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           cache: 'pip'
-          python-version: 3.12
+          python-version: 3.13t
       - name: Install Archery
         shell: bash
         run: pip install -e arrow/dev/archery[all]
@@ -122,7 +122,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.12
+          python-version: 3.13t
       - name: Checkout Crossbow
         uses: actions/checkout@v4
         with:
@@ -140,8 +140,8 @@ jobs:
             --queue-path $(pwd)/crossbow \
             --queue-remote https://github.com/MugundanMCW/crossbow.git \
             upload-artifacts \
-            --sha build-44-github-wheel-windows-cp312-cp312-amd64 \
-            --tag build-44-github-wheel-windows-cp312-cp312-amd64 \
+            --sha build-44-github-wheel-windows-cp313t-cp313t-amd64 \
+            --tag build-44-github-wheel-windows-cp313t-cp313t-amd64 \
             "arrow/python/repaired_wheels/*.whl"
         env:
           CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
@@ -152,7 +152,7 @@ jobs:
             --queue-path $(pwd)/crossbow \
             --queue-remote https://github.com/MugundanMCW/crossbow.git \
             status \
-            --task-filter 'wheel-windows-cp312-cp312-amd64' \
+            --task-filter 'wheel-windows-cp313t-cp313t-amd64' \
             --no-fetch \
             --validate \
             build-44
