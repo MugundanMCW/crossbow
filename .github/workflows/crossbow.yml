@@ -34,7 +34,7 @@ jobs:
     runs-on: "windows-11-arm"
     timeout-minutes: 240
     env:
-      PYTHON_CMD: "py -3.13t-arm64"
+      PYTHON_CMD: "py -3.14t-arm64"
       CMAKE_BUILD_TYPE: release
     steps:
       - name: Checkout Arrow
@@ -49,7 +49,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13t"
+          python-version: "3.14t"
           architecture: "arm64"
 
       - name: Install Python build dependencies
@@ -103,7 +103,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.12
+          python-version: 3.14t
       - name: Checkout Crossbow
         uses: actions/checkout@v4
         with:
@@ -121,8 +121,8 @@ jobs:
             --queue-path $(pwd)/crossbow \
             --queue-remote https://github.com/MugundanMCW/crossbow.git \
             upload-artifacts \
-            --sha build-43-github-wheel-windows-cp312-cp312-arm64 \
-            --tag build-43-github-wheel-windows-cp312-cp312-arm64 \
+            --sha build-43-github-wheel-windows-cp314t-cp314t-arm64 \
+            --tag build-43-github-wheel-windows-cp314t-cp314t-arm64 \
             "arrow/python/repaired_wheels/*.whl"
         env:
           CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
@@ -133,7 +133,7 @@ jobs:
             --queue-path $(pwd)/crossbow \
             --queue-remote https://github.com/MugundanMCW/crossbow.git \
             status \
-            --task-filter 'wheel-windows-cp312-cp312-arm64' \
+            --task-filter 'wheel-windows-cp314t-cp314t-arm64' \
             --no-fetch \
             --validate \
             build-43
