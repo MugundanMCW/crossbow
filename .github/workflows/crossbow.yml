@@ -49,7 +49,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.14t"
+          python-version: "3.12"
           architecture: "arm64"
 
       - name: Install Python build dependencies
