@@ -1,0 +1,179 @@
+!Job
+target: !Target
+  head: e9da4ecf499991776e2112319b07b36d43f56573
+  email: mugunthan.selvanayagam@multicorewareinc.com
+  branch: origin/trial_pa
+  remote: https://github.com/MugundanMCW/arrow.git
+  github_repo: MugundanMCW/arrow
+  version: 18.0.0
+  r_version: 18.0.0
+  no_rc_version: 18.0.0
+  no_rc_r_version: 18.0.0
+  no_rc_no_dev_version: 18.0.0
+  no_rc_semver_version: 18.0.0
+  no_rc_snapshot_version: 18.0.0
+  so_version: '1800'
+tasks:
+  wheel-windows-cp312-cp312-arm64: !Task
+    name: wheel-windows-cp312-cp312-arm64
+    ci: github
+    template: python-wheels/github.windows.arm64.yml
+    artifacts:
+    - pyarrow-18.0.0-cp312-cp312-win_arm64.whl
+    params:
+      python_version: '3.12'
+      python_abi_tag: cp312
+      runs_on: windows-11-arm
+    branch: build-53-github-wheel-windows-cp312-cp312-arm64
+    commit: e065190b741e609669ca4fe59c6d602c8d8e2ef8
+  wheel-windows-cp313-cp313t-amd64: !Task
+    name: wheel-windows-cp313-cp313t-amd64
+    ci: github
+    template: python-wheels/github.windows.yml
+    artifacts:
+    - pyarrow-18.0.0-cp313-cp313t-win_amd64.whl
+    params:
+      python_version: '3.13'
+      python_abi_tag: cp313t
+    branch: build-53-github-wheel-windows-cp313-cp313t-amd64
+    commit: f7fcdea751d11c63f3969c1578946f90648aae52
+  wheel-windows-cp310-cp310-arm64: !Task
+    name: wheel-windows-cp310-cp310-arm64
+    ci: github
+    template: python-wheels/github.windows.arm64.yml
+    artifacts:
+    - pyarrow-18.0.0-cp310-cp310-win_arm64.whl
+    params:
+      python_version: '3.10'
+      python_abi_tag: cp310
+      runs_on: windows-11-arm
+    branch: build-53-github-wheel-windows-cp310-cp310-arm64
+    commit: b78531ab4a8a472896fd0c3ceb9b5f99573a0bb7
+  wheel-windows-cp314-cp314t-arm64: !Task
+    name: wheel-windows-cp314-cp314t-arm64
+    ci: github
+    template: python-wheels/github.windows.arm64.yml
+    artifacts:
+    - pyarrow-18.0.0-cp314-cp314t-win_arm64.whl
+    params:
+      python_version: '3.14'
+      python_abi_tag: cp314t
+      runs_on: windows-11-arm
+    branch: build-53-github-wheel-windows-cp314-cp314t-arm64
+    commit: d9ba35b6d7ae04ce552d657e3909919e68a31186
+  wheel-windows-cp314-cp314-arm64: !Task
+    name: wheel-windows-cp314-cp314-arm64
+    ci: github
+    template: python-wheels/github.windows.arm64.yml
+    artifacts:
+    - pyarrow-18.0.0-cp314-cp314-win_arm64.whl
+    params:
+      python_version: '3.14'
+      python_abi_tag: cp314
+      runs_on: windows-11-arm
+    branch: build-53-github-wheel-windows-cp314-cp314-arm64
+    commit: 59a57007aeff5fde4bb564d47ace1ad0bbe8b9b5
+  wheel-windows-cp312-cp312-amd64: !Task
+    name: wheel-windows-cp312-cp312-amd64
+    ci: github
+    template: python-wheels/github.windows.yml
+    artifacts:
+    - pyarrow-18.0.0-cp312-cp312-win_amd64.whl
+    params:
+      python_version: '3.12'
+      python_abi_tag: cp312
+    branch: build-53-github-wheel-windows-cp312-cp312-amd64
+    commit: 86862bfac60566c8b3993654b381b96feaf7ae52
+  wheel-windows-cp314-cp314-amd64: !Task
+    name: wheel-windows-cp314-cp314-amd64
+    ci: github
+    template: python-wheels/github.windows.yml
+    artifacts:
+    - pyarrow-18.0.0-cp314-cp314-win_amd64.whl
+    params:
+      python_version: '3.14'
+      python_abi_tag: cp314
+    branch: build-53-github-wheel-windows-cp314-cp314-amd64
+    commit: c80a3aa87026a7ec7c3825b36c580eee67d94090
+  wheel-windows-cp313-cp313-amd64: !Task
+    name: wheel-windows-cp313-cp313-amd64
+    ci: github
+    template: python-wheels/github.windows.yml
+    artifacts:
+    - pyarrow-18.0.0-cp313-cp313-win_amd64.whl
+    params:
+      python_version: '3.13'
+      python_abi_tag: cp313
+    branch: build-53-github-wheel-windows-cp313-cp313-amd64
+    commit: 4f883a6d5f1aa0fddcff9e8c6a01a2783d51259f
+  wheel-windows-cp313-cp313t-arm64: !Task
+    name: wheel-windows-cp313-cp313t-arm64
+    ci: github
+    template: python-wheels/github.windows.arm64.yml
+    artifacts:
+    - pyarrow-18.0.0-cp313-cp313t-win_arm64.whl
+    params:
+      python_version: '3.13'
+      python_abi_tag: cp313t
+      runs_on: windows-11-arm
+    branch: build-53-github-wheel-windows-cp313-cp313t-arm64
+    commit: f936e001683d784e96fdaf6bec329826225e351b
+  wheel-windows-cp313-cp313-arm64: !Task
+    name: wheel-windows-cp313-cp313-arm64
+    ci: github
+    template: python-wheels/github.windows.arm64.yml
+    artifacts:
+    - pyarrow-18.0.0-cp313-cp313-win_arm64.whl
+    params:
+      python_version: '3.13'
+      python_abi_tag: cp313
+      runs_on: windows-11-arm
+    branch: build-53-github-wheel-windows-cp313-cp313-arm64
+    commit: 6d358f923b77e4d6671bc6e88cf0237989a72ac3
+  wheel-windows-cp310-cp310-amd64: !Task
+    name: wheel-windows-cp310-cp310-amd64
+    ci: github
+    template: python-wheels/github.windows.yml
+    artifacts:
+    - pyarrow-18.0.0-cp310-cp310-win_amd64.whl
+    params:
+      python_version: '3.10'
+      python_abi_tag: cp310
+    branch: build-53-github-wheel-windows-cp310-cp310-amd64
+    commit: ca7ae1b0cf2b66e679ca4d1b9a8d2dd3db7a2f36
+  wheel-windows-cp314-cp314t-amd64: !Task
+    name: wheel-windows-cp314-cp314t-amd64
+    ci: github
+    template: python-wheels/github.windows.yml
+    artifacts:
+    - pyarrow-18.0.0-cp314-cp314t-win_amd64.whl
+    params:
+      python_version: '3.14'
+      python_abi_tag: cp314t
+    branch: build-53-github-wheel-windows-cp314-cp314t-amd64
+    commit: fae32f50c72e0d676007a3fc8b647787cb25be3a
+  wheel-windows-cp311-cp311-amd64: !Task
+    name: wheel-windows-cp311-cp311-amd64
+    ci: github
+    template: python-wheels/github.windows.yml
+    artifacts:
+    - pyarrow-18.0.0-cp311-cp311-win_amd64.whl
+    params:
+      python_version: '3.11'
+      python_abi_tag: cp311
+    branch: build-53-github-wheel-windows-cp311-cp311-amd64
+    commit: d077259fb9e3ba173ccf26977b58bbab10832b38
+  wheel-windows-cp311-cp311-arm64: !Task
+    name: wheel-windows-cp311-cp311-arm64
+    ci: github
+    template: python-wheels/github.windows.arm64.yml
+    artifacts:
+    - pyarrow-18.0.0-cp311-cp311-win_arm64.whl
+    params:
+      python_version: '3.11'
+      python_abi_tag: cp311
+      runs_on: windows-11-arm
+    branch: build-53-github-wheel-windows-cp311-cp311-arm64
+    commit: 6e238a074ac7349c490bbba09c1199cfcff60d44
+params: {}
+branch: build-53
