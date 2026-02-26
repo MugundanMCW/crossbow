@@ -22,7 +22,6 @@ on:
   push:
     branches:
       - "*-github-*"
-
 env:
   ARCHERY_DEBUG: 1
 
