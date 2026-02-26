@@ -43,7 +43,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 3448c730d688223ab0dbbbe2d80b74efcc765cc2
+          ref: 46deb51fc2d001858574439b9f6b7dd6d115a3b1
           submodules: recursive
 
       - name: Setup Python
@@ -56,7 +56,7 @@ jobs:
         shell: cmd
         run: |
           %PYTHON_CMD% -m pip install --upgrade pip
-          %PYTHON_CMD% -m pip install cython numpy setuptools_scm setuptools wheel build
+          %PYTHON_CMD% -m pip install -r arrow/python/requirements-wheel-build.txt
           %PYTHON_CMD% -m pip install pandas pytest hypothesis pytz
           
       - name: Cache vcpkg dependencies
@@ -75,6 +75,7 @@ jobs:
             --x-install-root=C:\vcpkg\installed ^
             --x-manifest-root=. ^
             --x-feature=flight ^
+            --x-feature=azure ^
             --x-feature=json ^
             --x-feature=gcs ^
             --x-feature=orc ^
