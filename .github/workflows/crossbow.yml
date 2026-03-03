@@ -61,8 +61,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: C:\vcpkg\installed
-          key: "vcpkg-installed-windows-arm64-${{ hashFiles('arrow/ci/vcpkg/vcpkg.json') }}"      
-          restore-keys: vcpkg-installed-windows-arm64-
+          key: "vcpkg-installed-windows-arm64-static-${{ hashFiles('arrow/ci/vcpkg/vcpkg.json') }}"      
+          restore-keys: vcpkg-installed-windows-arm64-static
 
       - name: Install vcpkg dependencies
         shell: cmd
