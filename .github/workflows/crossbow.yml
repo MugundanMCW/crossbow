@@ -41,7 +41,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 99ad9fa262ecae6fe5af6b7b0e0497b2a4219147
+          ref: 4e274d3d55f2e30ce19a9db590e09d1acd07e187
           submodules: recursive
 
       - name: Setup Python
@@ -69,6 +69,7 @@ jobs:
         run: |
           cd arrow\ci\vcpkg
           C:\vcpkg\vcpkg.exe install ^
+            --triplet arm64-windows-static-md ^
             --binarysource="clear;x-gha,readwrite" ^
             --x-install-root=C:\vcpkg\installed ^
             --x-manifest-root=. ^
