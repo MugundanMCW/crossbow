@@ -32,7 +32,7 @@ jobs:
     runs-on: "windows-11-arm"
     timeout-minutes: 240
     env:
-      PYTHON_CMD: "py -3.14-arm64"
+      PYTHON_CMD: "py -3.14t-arm64"
       CMAKE_BUILD_TYPE: release
     steps:
       - name: Checkout Arrow
@@ -41,13 +41,13 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 9b43c16bf71670eac4d41332d5a027496120338b
+          ref: 99ad9fa262ecae6fe5af6b7b0e0497b2a4219147
           submodules: recursive
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.14"
+          python-version: "3.14t"
           architecture: "arm64"
 
       - name: Install Python build dependencies
