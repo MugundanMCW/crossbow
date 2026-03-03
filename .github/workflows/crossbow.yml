@@ -32,7 +32,7 @@ jobs:
     runs-on: "windows-11-arm"
     timeout-minutes: 240
     env:
-      PYTHON_CMD: "py -3.14t-arm64"
+      PYTHON_CMD: "py -3.14-arm64"
       CMAKE_BUILD_TYPE: release
     steps:
       - name: Checkout Arrow
@@ -41,13 +41,13 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: f68419a94cdab9d7b3f17b89b81288be4e2408a3
+          ref: a3e1b77325dd5a4ba95b79fa0f0f5f5385793609
           submodules: recursive
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.14t"
+          python-version: "3.14"
           architecture: "arm64"
 
       - name: Install Python build dependencies
@@ -80,63 +80,63 @@ jobs:
             --x-feature=parquet ^
             --x-feature=s3
             
-      # - name: Build Arrow C++ and PyArrow wheel
-      #   shell: cmd
-      #   env:
-      #     ARCH: "ARM64"
-      #     SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
-      #   run: |
-      #     call "arrow\ci\scripts\python_wheel_windows_build.bat"
+      - name: Build Arrow C++ and PyArrow wheel
+        shell: cmd
+        env:
+          ARCH: "ARM64"
+          SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
+        run: |
+          call "arrow\ci\scripts\python_wheel_windows_build.bat"
       
-      # - name: Test wheel
-      #   shell: cmd
-      #   env:
-      #     ARCH: "ARM64"
-      #   run: |
-      #     call "arrow\ci\scripts\python_wheel_windows_test.bat"
+      - name: Test wheel
+        shell: cmd
+        env:
+          ARCH: "ARM64"
+        run: |
+          call "arrow\ci\scripts\python_wheel_windows_test.bat"
           
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: wheel
-      #     path: arrow/python/repaired_wheels/*.whl
-      # - name: Set up Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: 3.12
-      # - name: Checkout Crossbow
-      #   uses: actions/checkout@v4
-      #   with:
-      #     path: crossbow
-      #     ref: build-55
-      # - name: Setup Crossbow
-      #   shell: bash
-      #   run: |
-      #     python3 -m pip install -e arrow/dev/archery[crossbow]
-      #     echo "$HOME/.local/bin" >> $GITHUB_PATH
-      # - name: Upload artifacts
-      #   shell: bash
-      #   run: |
-      #     archery crossbow \
-      #       --queue-path $(pwd)/crossbow \
-      #       --queue-remote https://github.com/MugundanMCW/crossbow.git \
-      #       upload-artifacts \
-      #       --sha build-55-github-wheel-windows-cp314-cp314t-arm64 \
-      #       --tag build-55-github-wheel-windows-cp314-cp314t-arm64 \
-      #       "arrow/python/repaired_wheels/*.whl"
-      #   env:
-      #     CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
-      # - name: Verify uploaded artifacts
-      #   shell: bash
-      #   run: |
-      #     archery crossbow \
-      #       --queue-path $(pwd)/crossbow \
-      #       --queue-remote https://github.com/MugundanMCW/crossbow.git \
-      #       status \
-      #       --task-filter 'wheel-windows-cp314-cp314t-arm64' \
-      #       --no-fetch \
-      #       --validate \
-      #       build-55
-        # env:
-        #   CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheel
+          path: arrow/python/repaired_wheels/*.whl
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - name: Checkout Crossbow
+        uses: actions/checkout@v4
+        with:
+          path: crossbow
+          ref: build-55
+      - name: Setup Crossbow
+        shell: bash
+        run: |
+          python3 -m pip install -e arrow/dev/archery[crossbow]
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: Upload artifacts
+        shell: bash
+        run: |
+          archery crossbow \
+            --queue-path $(pwd)/crossbow \
+            --queue-remote https://github.com/MugundanMCW/crossbow.git \
+            upload-artifacts \
+            --sha build-55-github-wheel-windows-cp314-cp314t-arm64 \
+            --tag build-55-github-wheel-windows-cp314-cp314t-arm64 \
+            "arrow/python/repaired_wheels/*.whl"
+        env:
+          CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      - name: Verify uploaded artifacts
+        shell: bash
+        run: |
+          archery crossbow \
+            --queue-path $(pwd)/crossbow \
+            --queue-remote https://github.com/MugundanMCW/crossbow.git \
+            status \
+            --task-filter 'wheel-windows-cp314-cp314t-arm64' \
+            --no-fetch \
+            --validate \
+            build-55
+        env:
+          CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 
       
