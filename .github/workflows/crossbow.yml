@@ -84,63 +84,63 @@ jobs:
             --x-feature=parquet ^
             --x-feature=s3
             
-      # - name: Build Arrow C++ and PyArrow wheel
-      #   shell: cmd
-      #   env:
-      #     ARCH: "ARM64"
-      #     SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
-      #   run: |
-      #     call "arrow\ci\scripts\python_wheel_windows_build.bat"
+      - name: Build Arrow C++ and PyArrow wheel
+        shell: cmd
+        env:
+          ARCH: "ARM64"
+          SETUPTOOLS_SCM_PRETEND_VERSION: "18.0.0"
+        run: |
+          call "arrow\ci\scripts\python_wheel_windows_build.bat"
       
-      # - name: Test wheel
-      #   shell: cmd
-      #   env:
-      #     ARCH: "ARM64"
-      #   run: |
-      #     call "arrow\ci\scripts\python_wheel_windows_test.bat"
+      - name: Test wheel
+        shell: cmd
+        env:
+          ARCH: "ARM64"
+        run: |
+          call "arrow\ci\scripts\python_wheel_windows_test.bat"
           
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: wheel
-      #     path: arrow/python/repaired_wheels/*.whl
-      # - name: Set up Python
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: 3.12
-      # - name: Checkout Crossbow
-      #   uses: actions/checkout@v4
-      #   with:
-      #     path: crossbow
-      #     ref: build-59
-      # - name: Setup Crossbow
-      #   shell: bash
-      #   run: |
-      #     python3 -m pip install -e arrow/dev/archery[crossbow]
-      #     echo "$HOME/.local/bin" >> $GITHUB_PATH
-      # - name: Upload artifacts
-      #   shell: bash
-      #   run: |
-      #     archery crossbow \
-      #       --queue-path $(pwd)/crossbow \
-      #       --queue-remote https://github.com/MugundanMCW/crossbow.git \
-      #       upload-artifacts \
-      #       --sha build-59-github-wheel-windows-cp313-cp313-arm64 \
-      #       --tag build-59-github-wheel-windows-cp313-cp313-arm64 \
-      #       "arrow/python/repaired_wheels/*.whl"
-      #   env:
-      #     CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
-      # - name: Verify uploaded artifacts
-      #   shell: bash
-      #   run: |
-      #     archery crossbow \
-      #       --queue-path $(pwd)/crossbow \
-      #       --queue-remote https://github.com/MugundanMCW/crossbow.git \
-      #       status \
-      #       --task-filter 'wheel-windows-cp313-cp313-arm64' \
-      #       --no-fetch \
-      #       --validate \
-      #       build-59
-      #   env:
-      #     CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheel
+          path: arrow/python/repaired_wheels/*.whl
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+      - name: Checkout Crossbow
+        uses: actions/checkout@v4
+        with:
+          path: crossbow
+          ref: build-59
+      - name: Setup Crossbow
+        shell: bash
+        run: |
+          python3 -m pip install -e arrow/dev/archery[crossbow]
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: Upload artifacts
+        shell: bash
+        run: |
+          archery crossbow \
+            --queue-path $(pwd)/crossbow \
+            --queue-remote https://github.com/MugundanMCW/crossbow.git \
+            upload-artifacts \
+            --sha build-59-github-wheel-windows-cp313-cp313-arm64 \
+            --tag build-59-github-wheel-windows-cp313-cp313-arm64 \
+            "arrow/python/repaired_wheels/*.whl"
+        env:
+          CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      - name: Verify uploaded artifacts
+        shell: bash
+        run: |
+          archery crossbow \
+            --queue-path $(pwd)/crossbow \
+            --queue-remote https://github.com/MugundanMCW/crossbow.git \
+            status \
+            --task-filter 'wheel-windows-cp313-cp313-arm64' \
+            --no-fetch \
+            --validate \
+            build-59
+        env:
+          CROSSBOW_GITHUB_TOKEN: ${{ secrets.CROSSBOW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 
       
