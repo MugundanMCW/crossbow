@@ -32,7 +32,7 @@ jobs:
   build:
     name: "Build wheel for Windows ARM64"
     runs-on: "windows-11-arm"
-    timeout-minutes: 240
+    timeout-minutes: 300
     env:
       PYTHON_CMD: "py -3.13t-arm64"
       CMAKE_BUILD_TYPE: release
@@ -43,7 +43,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: MugundanMCW/arrow
-          ref: 8d510c8da3f261f7fb2d09d045430462d9bf5375
+          ref: f85ee95ce4e27a5b5c77fa677576ef77bf0f8adb
           submodules: recursive
 
       - name: Setup Python
